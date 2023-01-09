@@ -4,6 +4,7 @@ on:
       branches: [ main ]
       paths:
         - 'part2/04-cicd/**'
+        - '.github/workflows/deploy_ssh.yml'
 
 jobs:
   build:
@@ -17,5 +18,6 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: 22
         script: |
+            ls -a
             cd ~/${{ github.event.repository.name }}/part2/04-cicd
             sh deploy_ssh.sh
